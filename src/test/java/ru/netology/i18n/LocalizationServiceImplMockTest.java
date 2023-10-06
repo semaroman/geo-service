@@ -6,9 +6,10 @@ import ru.netology.entity.Country;
 
 class LocalizationServiceImplMockTest {
 
+    LocalizationServiceImplMock localizationServiceImpl = new LocalizationServiceImplMock();
+
     @Test
     void localeTestRussia() {
-        LocalizationServiceImplMock localizationServiceImpl = new LocalizationServiceImplMock();
         String expected = "Добро пожаловать";
         String actual = localizationServiceImpl.locale(Country.RUSSIA);
         Assertions.assertEquals(expected, actual);
@@ -16,7 +17,6 @@ class LocalizationServiceImplMockTest {
 
     @Test
     void localeTestDefault() {
-        LocalizationServiceImplMock localizationServiceImpl = new LocalizationServiceImplMock();
         String expected = "Welcome";
         String actual = localizationServiceImpl.locale(Country.USA);
         Assertions.assertEquals(expected, actual);

@@ -6,12 +6,17 @@ import ru.netology.entity.Country;
 import ru.netology.entity.Location;
 
 class GeoServiceImplMockTest {
+    GeoServiceImplMock geoServiceImpl = new GeoServiceImplMock();
 
     @Test
-    void byIpMoscowTest() {
-        GeoServiceImplMock geoServiceImpl = new GeoServiceImplMock();
-        Location expected = new Location("Moscow", Country.RUSSIA, "Lenina", 15);
-        Location actual = geoServiceImpl.byIp(GeoServiceImpl.MOSCOW_IP);
-        Assertions.assertEquals(expected, actual);
+    void byIpTestRussia() {
+        Location RUS = geoServiceImpl.byIp("172.168.5.251");
+        Assertions.assertEquals(Country.RUSSIA, RUS.getCountry());
+    }
+
+    @Test
+    void byIpTestUsa() {
+        Location US = geoServiceImpl.byIp("96.168.5.251");
+        Assertions.assertEquals(Country.USA, US.getCountry());
     }
 }
